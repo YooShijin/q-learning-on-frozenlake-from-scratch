@@ -21,7 +21,8 @@ import numpy as np
 
 def max_q_value(q_table, state):
     """Return the maximum Q value across all actions for the given state."""
-    return max(q_table[state])
+    idx = np.argmax(q_table[state])
+    return q_table[state][idx]
 
 # Step 3 - greedy_action (not yet solved)
 # TODO: implement
