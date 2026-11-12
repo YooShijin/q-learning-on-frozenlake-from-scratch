@@ -11,9 +11,10 @@ import numpy as np
 def init_q_table(num_states, num_actions):
     """Return a zero-initialized Q-table of shape (num_states, num_actions)."""
     # table = np.array(num_states, num_actions)
-    table = [ [float(0)]*num_actions for _ in range(num_states)]
-    table = np.array(table)
-    return table
+    # table = [ [float(0)]*num_actions for _ in range(num_states)]
+    # table = np.array(table)
+    # return table
+    return np.zeros((num_states,num_actions))
 
 # Step 2 - max_q_value (not yet solved)
 # TODO: implement
