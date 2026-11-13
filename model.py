@@ -105,6 +105,7 @@ def run_training_episode(env, q_table, epsilon, alpha, gamma, rng, max_steps=200
     total_step = 0
     total_reward = 0.0
     done = False
+    state, _ = env.reset()
     while total_step < max_steps and not done:
         next_state, reward, done = interaction_step(env, q_table, state, epsilon, alpha,gamma,rng)
         state = next_state
@@ -121,7 +122,7 @@ def train_q_learning(env, num_episodes, alpha=0.8, gamma=0.95, epsilon_start=1.0
     num_actions = env.action_space.n
     q_table = init_q_table(num_states, num_actions)
     epsilon = epsilon_start
-    state, _ = env.reset(seed=seed)
+    env.reset(seed=seed)
     env.action_space.seed(seed)
     rng = np.random.default_rng(seed)
     episode_returns = []
