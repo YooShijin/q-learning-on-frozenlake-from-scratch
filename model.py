@@ -42,9 +42,7 @@ def sample_random_action(action_space):
 def should_explore(epsilon, rng):
     """Return True with probability epsilon using the provided numpy Generator."""
     # TODO: draw a uniform sample from rng and compare it to epsilon
-    if (rng.random() < epsilon):
-        return True
-    return False
+    return rng.random() < epsilon
 
 # Step 6 - epsilon_greedy_action
 import numpy as np
@@ -107,8 +105,6 @@ def run_training_episode(env, q_table, epsilon, alpha, gamma, rng, max_steps=200
     total_step = 0
     total_reward = 0.0
     done = False
-    state, _ = env.reset(seed=0) 
-    env.action_space.seed(0)
     while total_step < max_steps and not done:
         next_state, reward, done = interaction_step(env, q_table, state, epsilon, alpha,gamma,rng)
         state = next_state
