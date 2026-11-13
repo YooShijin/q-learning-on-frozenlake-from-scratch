@@ -160,6 +160,14 @@ def run_greedy_episode(env, policy, seed=None, max_steps=200):
 
     return reward > 0
 
-# Step 16 - evaluate_success_rate (not yet solved)
-# TODO: implement
+# Step 16 - evaluate_success_rate
+def evaluate_success_rate(env, policy, num_episodes, seed=0, max_steps=200):
+    # TODO: run num_episodes greedy rollouts and return the fraction that reached the goal.
+    no_of_success = 0.0
+    for i in range(num_episodes):
+        success = run_greedy_episode(env, policy, seed= seed, max_steps = max_steps)
+        if(success):
+            no_of_success+=1.0
+
+    return float(no_of_success/num_episodes)
 
