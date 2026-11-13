@@ -125,7 +125,7 @@ def train_q_learning(env, num_episodes, alpha=0.8, gamma=0.95, epsilon_start=1.0
     num_actions = env.action_space.n
     q_table = init_q_table(num_states, num_actions)
     epsilon = epsilon_start
-    env.reset(seed=seed)
+    state, _ = env.reset(seed=seed)
     env.action_space.seed(seed)
     rng = np.random.default_rng(seed)
     episode_returns = []
@@ -147,8 +147,7 @@ def extract_greedy_policy(q_table):
 def run_greedy_episode(env, policy, seed=None, max_steps=200):
     """Run one greedy episode and return True if the goal was reached."""
     # TODO: reset env, follow policy[state] each step, return bool(success)
-    state = 0
-    env.reset(seed= seed)
+    state,_ = env.reset(seed= seed)
     env.action_space.seed(seed=seed)
     reward = -0.1
     for i in range(max_steps):
